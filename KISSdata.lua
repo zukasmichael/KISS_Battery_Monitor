@@ -1,4 +1,4 @@
-local versionInfo = "KISS Telemetry Data - Beta 1.1.1"
+local versionInfo = "KISS Telemetry Data - v1.2.1"
 
 local blnMenuMode = 0
 
@@ -127,18 +127,18 @@ local function run_func(event)
     end
 
     -- Respond to user KeyPresses for mahSetup
-      if event == 68 then
+      if event == EVT_PLUS_FIRST then
         mahAlertPerc = mahAlertPerc + 1
       end
 
-      if event == 69 then
+      if event == EVT_MINUS_FIRST then
         mahAlertPerc = mahAlertPerc - 1
       end
 
     lcd.clear()
 
     lcd.drawScreenTitle(versionInfo,2,2)
-    lcd.drawText(35,10, "Set Percentage Notifications")
+    lcd.drawText(35,10, "Set Percentage Notications")
     lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
     lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
 
@@ -152,12 +152,12 @@ local function run_func(event)
   end
 
     -- Respond to user KeyPresses for mahSetup
-      if event == 68 then
-        mahTarget = mahTarget + 1
+      if event == EVT_PLUS_FIRST then
+        mahTarget = mahTarget + 10
       end
 
-      if event == 69 then
-        mahTarget = mahTarget - 1
+      if event == EVT_MINUS_FIRST then
+        mahTarget = mahTarget - 10
       end
 
     --Update our screen
