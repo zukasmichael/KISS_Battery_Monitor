@@ -1,6 +1,19 @@
-<<<<<<< HEAD
 # KISS_Battery_Monitor
-Open TX Telemetry Script for reading and announcing battery mAh consumption as reported from KISS 24a ESC. 
-=======
-# KISS_Battery_Monitor
->>>>>>> ce0d068211f0b1ade1d351a931a5d3ae1d826ccc
+Open TX Telemetry Script for reading and announcing battery mAh consumption.  Uses the mAh consumption as reported from KISS 24a ESC as Telemetry data and accepts a configurable user Target mAH and Percentage Notification.  The pilot can target how much mAh they intend to use that flight, adjust this value as needed, and this will be used as the "Battery".  The Percentage Notification allow for the pilot to receive verbal indication of the "Battery" at the desired intervals.  During the final 10% of the "Battery" an indication is given at every 1%.   After 100% usage of the "Battery" each additional % used will trigger a "Battery Critical" alarm.
+
+# REQUIREMENTS
+* KISS 24a ESC
+* OPEN TX 2.1 Firmware on Taranis
+
+# INSTALLATION:
+Place this file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis
+``` SCRIPTS\TELEMETRY ```  (if the TELEMETRY folder does not exist then you may need to create it)
+
+
+# SETUP:
+There are two parameters the Pilot may adjust as needed.
+* Target mAh = The amount of mAh the pilot wants to consume.
+* Notification Percentages = The Percentages the pilot wants the verbal alerts to trigger.
+
+# Known Issues:
+The Telemetry data is not visible for viewing after RSSI loss (ie pilot lands and disconnects battery from multi rotor)
