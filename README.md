@@ -1,5 +1,9 @@
+
 # KISS_Battery_Monitor
 Open TX Telemetry Script for reading and announcing battery mAh consumption.  Uses the mAh consumption as reported from KISS 24a ESC as Telemetry data and accepts a configurable user Target mAH and Percentage Notification.  The pilot can target how much mAh they intend to use that flight, adjust this value as needed, and this will be used as the "Battery".  The Percentage Notification allow for the pilot to receive verbal indication of the "Battery" at the desired intervals.  During the final 10% of the "Battery" an indication is given at every 1%.   After 100% usage of the "Battery" each additional % used will trigger a "Battery Critical" alarm.
+
+# SCREENSHOTS
+See the WIKI for more information and screenshots.  https://github.com/DynamikArray/KISS_Battery_Monitor/wiki
 
 # REQUIREMENTS
 * KISS 24a ESC
@@ -20,9 +24,6 @@ There are two parameters the Pilot may adjust as needed.
 On the main screen of the script, you may adjust the target mAh at anytime using the +/- keys to adjust the value in steps of 10.
 
 Percentages Notification adjust may be accessed by pressing the [MENU] key.  On the Percentages Notification Screen you may adjust the Percentage using the +/- keys.  Pressing the [MENU] key again will bring you back to the main screen of this script.
-
-See the WIKI for more information and screenshots.  https://github.com/DynamikArray/KISS_Battery_Monitor/wiki
-
 
 # Known Issues:
 The Telemetry data is not visible for viewing after RSSI loss (ie pilot lands and disconnects battery from multi rotor)
