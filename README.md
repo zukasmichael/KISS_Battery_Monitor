@@ -10,7 +10,7 @@ See the WIKI for more information and screenshots.  https://github.com/DynamikAr
 * OPEN TX 2.1 Firmware on Taranis
 
 # INSTALLATION:
-Place this file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis
+Download the latest release from the https://github.com/DynamikArray/KISS_Battery_Monitor/releases and place the file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis.
 ``` SCRIPTS\TELEMETRY ```  (if the TELEMETRY folder does not exist then you may need to create it)
 
 # SETUP:
