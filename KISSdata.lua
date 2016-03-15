@@ -117,9 +117,6 @@ end
 ----------------------------------------------------------------
 local function run_func(event)
 
-
-
-
   if blnMenuMode == 1 then
     --We are in our menu mode
 
@@ -140,7 +137,7 @@ local function run_func(event)
     lcd.clear()
 
     lcd.drawScreenTitle(versionInfo,2,2)
-    lcd.drawText(35,10, "Set Percentage Notications")
+    lcd.drawText(35,10, "Set Notification Percentages")
     lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
     lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
 
