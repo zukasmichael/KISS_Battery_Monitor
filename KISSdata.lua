@@ -1,4 +1,4 @@
-local versionInfo = "KISS Telemetry Data - alpha 0.0.1"
+local versionInfo = "KISS Telemetry Data - Beta 1.1.1"
 
 local blnMenuMode = 0
 
@@ -74,10 +74,8 @@ local function drawAlerts()
   curMah = getValue(data.fuelUsed)
   percVal =  round(((curMah/mahTarget) * 100),0)
 
-  -- lcd.drawGauge(6, 35, 70, 20, percVal, 100)
-
-  lcd.drawText(5, 20, "USED: "..curMah.."mah" , MIDSIZE)
-  lcd.drawText(90, 40, percVal.." %" , MIDSIZE)
+  lcd.drawText(5, 10, "USED: "..curMah.."mah" , MIDSIZE)
+  lcd.drawText(90, 30, percVal.." %" , MIDSIZE)
 
 end
 
@@ -117,10 +115,13 @@ end
 ----------------------------------------------------------------
 local function run_func(event)
 
+
+
+
   if blnMenuMode == 1 then
     --We are in our menu mode
 
-    if event == 64 then
+    if event == 32 then
       --Take us out of menu mode
         blnMenuMode = 0
     end
@@ -137,7 +138,7 @@ local function run_func(event)
     lcd.clear()
 
     lcd.drawScreenTitle(versionInfo,2,2)
-    lcd.drawText(35,10, "Set Notification Percentages")
+    lcd.drawText(35,10, "Set Percentage Notications")
     lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
     lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
 
@@ -145,7 +146,7 @@ local function run_func(event)
 
   else
 
-  if event == 64 then
+  if event == 32 then
     --Put us in menu mode
       blnMenuMode = 1
   end
@@ -162,14 +163,14 @@ local function run_func(event)
     --Update our screen
       lcd.clear()
 
-
-
-      lcd.drawText(130, 20, "Target mAh : ",MIDSIZE)
-      lcd.drawText(160, 35, mahTarget,MIDSIZE)
-      lcd.drawText(130, 50, "Use +/- to change",SMLSIZE)
-
-      lcd.drawGauge(6, 35, 70, 20, percVal, 100)
       lcd.drawScreenTitle(versionInfo,1,2)
+
+      lcd.drawGauge(6, 25, 70, 20, percVal, 100)
+      lcd.drawText(130, 10, "Target mAh : ",MIDSIZE)
+      lcd.drawText(160, 25, mahTarget,MIDSIZE)
+      lcd.drawText(130, 40, "Use +/- to change",SMLSIZE)
+
+      lcd.drawText(30, 55, "Press [MENU] for more options",SMLSIZE)
 
       draw()
       doMahAlert()
