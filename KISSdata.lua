@@ -1,5 +1,7 @@
 local versionInfo = "KISS Telemetry Data - alpha 0.0.1"
 
+local blnMenuMode = 0
+
 -- mahTarget is used to set our target mah consumption and mahAlertPerc is used for division of alerts
 local mahTarget = 900
 local mahAlertPerc = 10
@@ -114,10 +116,42 @@ end
 --  outside of this run_func
 ----------------------------------------------------------------
 local function run_func(event)
+
+
+
+
+  if blnMenuMode == 1 then
+    --We are in our menu mode
+
     if event == 64 then
-      lcd.clear()
-      lcd.drawText(0, 10, "WE GOT HERE")
-    else
+      --Take us out of menu mode
+        blnMenuMode = 0
+    end
+
+    -- Respond to user KeyPresses for mahSetup
+      if event == EVT_PLUS_FIRST then
+        mahAlertPerc = mahAlertPerc + 1
+      end
+
+      if event == EVT_MINUS_FIRST then
+        mahAlertPerc = mahAlertPerc - 1
+      end
+
+    lcd.clear()
+
+    lcd.drawScreenTitle(versionInfo,2,2)
+    lcd.drawText(35,10, "Set Percentage Notications")
+    lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
+    lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
+
+    lcd.drawText(60, 55, "Press [MENU] to return",SMLSIZE)
+
+  else
+
+  if event == 64 then
+    --Put us in menu mode
+      blnMenuMode = 1
+  end
 
     -- Respond to user KeyPresses for mahSetup
       if event == EVT_PLUS_FIRST then
@@ -128,21 +162,22 @@ local function run_func(event)
         mahTarget = mahTarget - 10
       end
 
-  --Update our screen
+    --Update our screen
       lcd.clear()
 
-      lcd.drawText(0, 10, event)
+
 
       lcd.drawText(130, 20, "Target mAh : ",MIDSIZE)
       lcd.drawText(160, 35, mahTarget,MIDSIZE)
       lcd.drawText(130, 50, "Use +/- to change",SMLSIZE)
 
       lcd.drawGauge(6, 35, 70, 20, percVal, 100)
-      lcd.drawScreenTitle(versionInfo,1,1)
+      lcd.drawScreenTitle(versionInfo,1,2)
 
       draw()
       doMahAlert()
   end
+
 end
 --------------------------------
 
