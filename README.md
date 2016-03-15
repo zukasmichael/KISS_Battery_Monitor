@@ -19,7 +19,10 @@ There are two parameters the Pilot may adjust as needed.
 
 On the main screen of the script, you may adjust the target mAh at anytime using the +/- keys to adjust the value in steps of 10.
 
- Percentages Notification adjust may be accessed by pressing the [MENU] key.  On the Percentages Notification Screen you may adjust the Percentage using the +/- keys.  Pressing the [MENU] key again will bring you back to the main screen of this script.
+Percentages Notification adjust may be accessed by pressing the [MENU] key.  On the Percentages Notification Screen you may adjust the Percentage using the +/- keys.  Pressing the [MENU] key again will bring you back to the main screen of this script.
+
+See the WIKI for more information and screenshots.  https://github.com/DynamikArray/KISS_Battery_Monitor/wiki
+
 
 # Known Issues:
 The Telemetry data is not visible for viewing after RSSI loss (ie pilot lands and disconnects battery from multi rotor)
