@@ -9,11 +9,17 @@ Open TX Telemetry Script for reading and announcing battery mAh consumption.  Us
 Place this file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis
 ``` SCRIPTS\TELEMETRY ```  (if the TELEMETRY folder does not exist then you may need to create it)
 
-
 # SETUP:
+Attach this script to one of your TELEMETRY screens inside your radio.
+
+# USAGE
 There are two parameters the Pilot may adjust as needed.
-* Target mAh = The amount of mAh the pilot wants to consume.
-* Notification Percentages = The Percentages the pilot wants the verbal alerts to trigger.
+* Target mAh = The amount of mAh the pilot wants to consume.  
+* Notification Percentage = The Percentages the pilot wants the verbal alerts to trigger.
+
+On the main screen of the script, you may adjust the target mAh at anytime using the +/- keys to adjust the value in steps of 10.
+
+ Percentages Notification adjust may be accessed by pressing the [MENU] key.  On the Percentages Notification Screen you may adjust the Percentage using the +/- keys.  Pressing the [MENU] key again will bring you back to the main screen of this script.
 
 # Known Issues:
 The Telemetry data is not visible for viewing after RSSI loss (ie pilot lands and disconnects battery from multi rotor)
