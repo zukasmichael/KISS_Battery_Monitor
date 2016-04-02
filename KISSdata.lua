@@ -1,12 +1,20 @@
-local versionInfo = "KISS Telemetry Data - v1.2.2"
+local versionInfo = "KISS Telemetry Data - v2.0.0"
 
-local blnMenuMode = 0
+local blnParamMode = 0
 
 -- mahTarget is used to set our target mah consumption and mahAlertPerc is used for division of alerts
 local mahTarget = 900
 local mahAlertPerc = 10
-
 local lastMahAlert = 0
+
+
+
+
+settingsItemSelected = "mahTarget"
+local settings = {}
+  settings["mahOverageAlertPerc"] = {["value"] = "2", ["labelName"] = "maH Overage Alarams"  }
+  settings["mahAlertPerc"] = {["value"] = "10", ["labelName"] = "maH Alert Percents "  }
+  settings["mahTarget"] = { ["value"] = "900" ,  ["labelName"] = "maH Usage Target" }
 
 
 ----------------------------------------------------------------
@@ -108,6 +116,90 @@ end
 --------------------------------
 
 
+
+
+
+
+
+----------------------------------------------------------------
+--
+--  Draws the values and text on our main screen when requested
+--
+----------------------------------------------------------------
+local function draw_main_screen()
+  lcd.drawScreenTitle(versionInfo,1,2)
+
+  lcd.drawGauge(6, 25, 70, 20, percVal, 100)
+  lcd.drawText(130, 10, "Target mAh : ",MIDSIZE)
+  lcd.drawText(160, 25, mahTarget,MIDSIZE)
+  lcd.drawText(130, 40, "Use +/- to change",SMLSIZE)
+
+  lcd.drawText(30, 55, "Press [MENU] for more options",SMLSIZE)
+
+  draw()
+  doMahAlert()
+end
+
+
+
+
+----------------------------------------------------------------
+--
+--  Draws the values and text for our parameters screen
+--
+  -- REFERECE DATA STRUCTRE REMOVE LATER
+  -- local settings = {}
+  --   settings["mahTarget"] = { ["value"] = "900" ,  ["labelName"] = "maH Usage Target" }
+  --   settings["mahAlertPerc"] = {["value"] = "10", ["labelName"] = "maH Alert Percents "  }
+  --   settings["mahOverageAlertPerc"] = {["value"] = "2", ["labelName"] = "maH Overage Alarams"  }
+
+----------------------------------------------------------------
+local function draw_new_settings_screen()
+  lcd.drawScreenTitle(versionInfo,2,2)
+  lcd.drawText(20,10, "Configure notification settings:")
+
+  yPos = 20
+  xPos = 10
+
+  -- start settings loop
+  for name,setting in pairs(settings) do
+    lcd.drawText(xPos,yPos, setting.value  )
+    lcd.drawText(xPos+30,yPos, name   )
+    yPos = yPos +10
+  end
+  -- end settings loop
+
+
+  lcd.drawText(60, 55, "Press [MENU] to return",SMLSIZE)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+--
+--  Draws the values and text for our parameters screen
+--
+----------------------------------------------------------------
+local function draw_params_screen()
+  lcd.drawScreenTitle(versionInfo,2,2)
+  lcd.drawText(35,10, "Set Percentage Notification")
+  lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
+  lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
+
+  lcd.drawText(60, 55, "Press [MENU] to return",SMLSIZE)
+end
+
+
+
 ----------------------------------------------------------------
 --  Should handle any flow needed when the screen is visible
 --  All screen updating should be done by as little (one) function
@@ -115,16 +207,20 @@ end
 ----------------------------------------------------------------
 local function run_func(event)
 
-
-
-
-  if blnMenuMode == 1 then
+  ----- PARAMS_MODE ------
+  if blnParamMode == 1 then
     --We are in our menu mode
 
+    -- EXIT PARAMS_MODE
     if event == 32 then
       --Take us out of menu mode
-        blnMenuMode = 0
+        blnParamMode = 0
     end
+
+    -- MOVE THROUGH PARAMS_ITEMS --
+
+
+
 
     -- Respond to user KeyPresses for mahSetup
       if event == EVT_PLUS_FIRST then
@@ -147,19 +243,15 @@ local function run_func(event)
 
 
     lcd.clear()
+    draw_new_settings_screen()
 
-    lcd.drawScreenTitle(versionInfo,2,2)
-    lcd.drawText(35,10, "Set Percentage Notification")
-    lcd.drawText(70,20,"Every "..mahAlertPerc.." %",MIDSIZE)
-    lcd.drawText(66, 35, "Use +/- to change",SMLSIZE)
 
-    lcd.drawText(60, 55, "Press [MENU] to return",SMLSIZE)
 
   else
 
   if event == 32 then
     --Put us in menu mode
-      blnMenuMode = 1
+      blnParamMode = 1
   end
 
     -- Respond to user KeyPresses for mahSetup
@@ -182,18 +274,8 @@ local function run_func(event)
 
     --Update our screen
       lcd.clear()
+      draw_main_screen()
 
-      lcd.drawScreenTitle(versionInfo,1,2)
-
-      lcd.drawGauge(6, 25, 70, 20, percVal, 100)
-      lcd.drawText(130, 10, "Target mAh : ",MIDSIZE)
-      lcd.drawText(160, 25, mahTarget,MIDSIZE)
-      lcd.drawText(130, 40, "Use +/- to change",SMLSIZE)
-
-      lcd.drawText(30, 55, "Press [MENU] for more options",SMLSIZE)
-
-      draw()
-      doMahAlert()
   end
 
 end
