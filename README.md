@@ -12,7 +12,11 @@ See the WIKI for more detailed information and screenshots on installation, and 
 
 # INSTALLATION:
 Download the latest release from the https://github.com/DynamikArray/KISS_Battery_Monitor/releases and place the file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis.
-``` SCRIPTS\TELEMETRY ```  (if the TELEMETRY folder does not exist then you may need to create it)
+``` SCRIPTS\TELEMETRY```  (if the TELEMETRY folder does not exist then you may need to create it).  
+
+*ADDITIONAL STEPS FOR SOME USERS*
+Some users reported not having the battery critcal alarm sound file.  Since release  https://github.com/DynamikArray/KISS_Battery_Monitor/tree/v1.2.3 this issue has been addressed with the inclusion of the batcrit.wav file.  If your not getting the battery critical alarm, place the (batcrit.wav) if the  ``` SOUNDS\en ``` of your SD Card.
+ 
 
 # SETUP:
 Attach this script to one of your TELEMETRY screens inside your radio.
