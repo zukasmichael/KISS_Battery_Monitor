@@ -8,10 +8,17 @@ local mahAlertPerc = 10
 
 local lastMahAlert = 0
 
+local minorVersion = 99
 
 ----------------------------------------------------------------
 -- Custom Functions
 ----------------------------------------------------------------
+local function getRadioVersion()
+  local ver, radio, minor = getVersion()
+  minorVersion = minor
+  return 1
+end
+
 local function getTelemetryId(name)
  field = getFieldInfo(name)
  if getFieldInfo(name) then return field.id end
@@ -33,6 +40,8 @@ end
 
 --MahAlert and Logging of last Value Played
 local function playMahPerc(percVal)
+  -- playNumber(minorVersion)
+  playNumber(99,1)
   playNumber(percVal,8)
   lastMahAlert = percVal  -- Set our lastMahAlert
 end
@@ -47,7 +56,6 @@ end
 
 
 local function playAlerts()
-
     percVal = 0
     curMah = getValue(data.fuelUsed)
 
@@ -94,6 +102,7 @@ end
 --
 ----------------------------------------------------------------
 local function init_func()
+  getRadioVersion()
   doMahAlert()
 end
 --------------------------------
