@@ -14,10 +14,11 @@ See the WIKI for more detailed information and screenshots on installation, and 
 Download the latest release from the https://github.com/DynamikArray/KISS_Battery_Monitor/releases and place the file (KISSdata.lua) in the following directory on the SD_CARD of your Taranis.
 ``` SCRIPTS\TELEMETRY```  (if the TELEMETRY folder does not exist then you may need to create it).  
 
-*ADDITIONAL STEPS FOR SOME USERS*
-Some users reported not having the battery critcal alarm sound file.  Since release  https://github.com/DynamikArray/KISS_Battery_Monitor/tree/v1.2.3 this issue has been addressed with the inclusion of the batcrit.wav file.  If your not getting the battery critical alarm, place the (batcrit.wav) if the  ``` SOUNDS\en ``` of your SD Card.
- 
+ADDITIONAL STEPS FOR SOME USERS
+* Some users reported not having the battery critcal alarm sound file.  Since release  https://github.com/DynamikArray/KISS_Battery_Monitor/tree/v1.2.3 this issue has been addressed with the inclusion of the batcrit.wav file.  If your not getting the battery critical alarm, place the (batcrit.wav) if the  ``` SOUNDS\en ``` of your SD Card. (Or apporiate region ```SOUNDS\fr, SOUNDS\de, SOUNDS\nl, etc..```)
 
+* If you are having issues after installation with sound playbacks not saying percentage, instead saying "miles per hour", "feet", or something other than "Percentage" then ensure you have the correct Open TX 2.1.X SOUND/SYSTEM files installed. Open TX sound packs are available for download here: http://voices-21.open-tx.org/
+ 
 # SETUP:
 Attach this script to one of your TELEMETRY screens inside your radio.
 
